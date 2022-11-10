@@ -12,7 +12,7 @@ public class ServerModel {
     public void bind_server(InetSocketAddress inetSocketAddress) {
         try {
             this.serverSocket = new ServerSocket();
-            this.bind_server(inetSocketAddress);
+            this.serverSocket.bind(inetSocketAddress);
         } catch (Exception e) {
             System.out.println("Can't bind server");
         }

@@ -70,11 +70,28 @@ public class ClientHandler implements Runnable{
 
                 this.sendServerMessage("Room is created");
             }
+
+            if (messageClient.equals("Client want to join room!")) {
+                int roomId = 0;
+                String roomPass = "";
+
+                while (true) {
+                    messageClient = (String) this.receiveClientMessage();
+                    if (messageClient.equals("Member joined room!")) {
+                        break;
+                    }
+                    roomId = Integer.parseInt((String) this.receiveClientMessage());
+                    roomPass = (String) this.receiveClientMessage();
+
+                    messageServer = this.checkJoinRoom(roomId, roomPass);
+                    this.sendServerMessage(messageServer);
+                }
+            }
         }
 
     }
 
-    public Object receiveClientMessage() {
+    public Object   receiveClientMessage() {
         Object object = "No message from client";
         try{
             object = this.oin.readObject();

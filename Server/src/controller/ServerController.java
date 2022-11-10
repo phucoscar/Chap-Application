@@ -1,6 +1,7 @@
 package controller;
 
 import model.ServerModel;
+import view.ServerView;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -44,11 +45,11 @@ public class ServerController extends Thread{
 
     // set text area
     public static void setMsg_area(String msg) {
-        if (ServerView.msg_are.getText().trim().equals("")) {
+        if (ServerView.msg_area.getText().trim().equals("")) {
             ServerView.msg_area.setText(msg);
         }
         else {
-            ServerView.msg_are.setText(ServerView.msg_area.getText().trim() + "\n" + msg);
+            ServerView.msg_area.setText(ServerView.msg_area.getText().trim() + "\n" + msg);
         }
     }
 }
